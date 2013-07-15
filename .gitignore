@@ -1,0 +1,7 @@
+*~
+*.pyc
+*\#
+TODO.txt
+bin/
+include/
+lib/
