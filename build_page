@@ -1,0 +1,16 @@
+#! /usr/bin/env python
+from odf_reader import ODSReader
+
+START_ROW = 2
+END_ROW = START_ROW + 26
+START_COL = 0
+END_COL = START_COL + 9
+
+if __name__ == '__main__':
+    print 'Start reading datas...'
+    document = ODSReader('./datas/Baccalaureat.ods')
+    table = document.getSheet('Feuille1')
+
+    for row in range(START_ROW, END_ROW + 1):
+        for col in range(START_COL, END_COL + 1):
+            print table[row][col]
