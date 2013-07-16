@@ -1,48 +1,37 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <title>Baccalauréat Facile !</title>
-
-  <link rel="stylesheet" href="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.css">
-
-  <!-- jQuery and jQuery Mobile -->
-  <script src="https://d10ajoocuyu32n.cloudfront.net/jquery-1.9.1.min.js"></script>
-  <script src="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
-
-</head>
-<body>
-<!-- Home -->
-<div data-role="page" id="page1">
-    <div data-theme="a" data-role="header">
-        <h1>
-            Baccalauréat
-        </h1>
-    </div>
-    <div data-role="content">
-	<p>Ahah on vous poutre les nièces !</p>
+  <head>
+    <meta charset="utf-8">
+    <title>Baccalauréat Facile !</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.css">
+    <script src="https://d10ajoocuyu32n.cloudfront.net/jquery-1.9.1.min.js"></script>
+    <script src="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+  </head>
+  <body>
+    <!-- Home -->
+    <div data-role="page" id="page1">
+      <div data-theme="a" data-role="header">
+        <h1>Baccalauréat</h1>
+      </div>
+      <div data-role="content">
+	<p>Ahah ! On vous poutre les nièces !</p>
 
         <ul data-role="listview" data-divider-theme="a" data-inset="true">
-            <li data-role="list-divider" role="heading">
-                A
-            </li>
-<li data-theme="d">
-	Anarchie
-            </li>
-            <li data-theme="d">
-	Armoire
-            </li>
-            <li data-theme="d">
-	Alphonse
-            </li>
-            <li data-theme="d">
-             Anémone
-            </li>
+          {% for letter, values in datas.items() %}
+          <li data-role="list-divider" role="heading" id="{{ letter.title() }}">
+            {{ letter }}
+          </li>
+          {% for value in values %}
+          <li data-theme="d">
+	    {{ value.value }}
+          </li>
+          {% endfor %}
+          {% endfor %}
         </ul>
+      </div>
     </div>
-</div>
-</body>
+  </body>
 </html>
