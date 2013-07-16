@@ -1,4 +1,4 @@
-*~
+B1;3201;0c*~
 *.pyc
 *\#
 TODO.txt
@@ -6,3 +6,4 @@ bin/
 include/
 lib/
 share/
+index.html

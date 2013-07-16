@@ -1,9 +1,11 @@
 #! /usr/bin/env python
+import codecs
 from collections import OrderedDict
 
 from odf_reader import ODSReader
 
 from jinja2 import Environment
+from jinja2 import FileSystemLoader
 from jinja2 import PackageLoader
 
 START_ROW = 2
@@ -40,4 +42,17 @@ if __name__ == '__main__':
                 Bac(table[START_ROW][col], table[row][col].strip()))
 
     print 'Loading the template...'
-    env = Environment(loader=PackageLoader('templates'))
+    template_loader = FileSystemLoader(searchpath='./templates')
+    template_env = Environment(loader=template_loader)
+    template = template_env.get_template('index.html')
+    context = {'datas': datas}
+
+    print 'Rendering the template...'
+    output = template.render(context)
+
+    print 'Writing the page'
+    with codecs.open('index.html', 'w', encoding='utf-8') as f:
+        f.write(output)
+
+    print 'OK !'
+
