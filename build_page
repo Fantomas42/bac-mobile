@@ -1,16 +1,43 @@
 #! /usr/bin/env python
+from collections import OrderedDict
+
 from odf_reader import ODSReader
+
+from jinja2 import Environment
+from jinja2 import PackageLoader
 
 START_ROW = 2
 END_ROW = START_ROW + 26
 START_COL = 0
 END_COL = START_COL + 9
 
+
+class Bac(object):
+
+    def __init__(self, type, value):
+        self.type = type
+        self.value = value
+
+    def __repr__(self):
+        return (u'%s: %s' % (self.type, self.value)).encode('utf-8')
+
+    def __str__(self):
+        return self.__repr__()
+
+
 if __name__ == '__main__':
     print 'Start reading datas...'
+
+    datas = OrderedDict()
     document = ODSReader('./datas/Baccalaureat.ods')
     table = document.getSheet('Feuille1')
 
-    for row in range(START_ROW, END_ROW + 1):
-        for col in range(START_COL, END_COL + 1):
-            print table[row][col]
+    for row in range(START_ROW + 1, END_ROW + 1):
+        letter = table[row][START_COL]
+        datas.setdefault(letter, [])
+        for col in range(START_COL + 1, END_COL + 1):
+            datas[letter].append(
+                Bac(table[START_ROW][col], table[row][col].strip()))
+
+    print 'Loading the template...'
+    env = Environment(loader=PackageLoader('templates'))
