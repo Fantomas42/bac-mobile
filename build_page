@@ -50,7 +50,7 @@ if __name__ == '__main__':
     print 'Rendering the template...'
     output = template.render(context)
 
-    print 'Writing the page'
+    print 'Writing the page...'
     with codecs.open('index.html', 'w', encoding='utf-8') as f:
         f.write(output)
 
