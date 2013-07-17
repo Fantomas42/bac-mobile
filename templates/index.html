@@ -25,9 +25,12 @@
             {{ letter }}
           </li>
           {% for value in values %}
+          {% if value.value %}
           <li data-theme="d">
 	    {{ value.value }}
+            <span class="ui-li-count">{{ value.type }}</span>
           </li>
+          {% endif %}
           {% endfor %}
           {% endfor %}
         </ul>
