@@ -19,21 +19,23 @@
       <div data-role="content">
 	<p>Ahah ! On vous poutre les nièces !</p>
 
+        {% for letter, bacs in datas.items() %}
         <ul data-role="listview" data-divider-theme="a" data-inset="true">
-          {% for letter, values in datas.items() %}
           <li data-role="list-divider" role="heading" id="{{ letter.title() }}">
             {{ letter }}
           </li>
-          {% for value in values %}
-          {% if value.value %}
+          {% for bac in bacs %}
+          {% if bac.values %}
           <li data-theme="d">
-	    {{ value.value }}
-            <span class="ui-li-count">{{ value.type }}</span>
+            {% for value in bac.values %}
+	    {{ value.title() }}{% if not loop.last %},{% else %}.{% endif %}
+            {% endfor %}
+            <span class="ui-li-count">{{ bac.type }}</span>
           </li>
           {% endif %}
           {% endfor %}
-          {% endfor %}
         </ul>
+        {% endfor %}
       </div>
     </div>
   </body>

@@ -19,9 +19,13 @@ class Bac(object):
     def __init__(self, type, value):
         self.type = type
         self.value = value
+        self.values = [v.strip()
+                       for v in self.value.split(',')
+                       if v.strip()]
 
     def __repr__(self):
-        return (u'%s: %s' % (self.type, self.value)).encode('utf-8')
+        return (u'%s: %s' % (
+            self.type, self.value)).encode('utf-8')
 
     def __str__(self):
         return self.__repr__()
