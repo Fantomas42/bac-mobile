@@ -13,8 +13,17 @@
   <body>
     <!-- Home -->
     <div data-role="page" id="page1">
-      <div data-theme="a" data-role="header">
+      <div data-theme="a" data-role="header" data-position="fixed">
         <h1>Baccalauréat</h1>
+        <a href="#index" data-icon="gear" data-rel="popup"
+           data-position-to="window" class="ui-btn-right">Index</a>
+      </div>
+      <div data-role="popup" id="index" data-theme="a">
+        <p>
+          {% for letter in datas.keys() %}
+          <a href="#{{ letter.title() }}">{{ letter.title() }}</a>{% if not loop.index % 13 %}<br />{% endif %}
+          {% endfor %}
+        </p>
       </div>
       <div data-role="content">
 	<p>Ahah ! On vous poutre les nièces !</p>
