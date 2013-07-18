@@ -9,6 +9,17 @@
     <link rel="stylesheet" href="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.css">
     <script src="https://d10ajoocuyu32n.cloudfront.net/jquery-1.9.1.min.js"></script>
     <script src="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('a.anchor').click(function(e) {
+            obj =  e.target;
+            str = String(obj);
+            var lett =  str.charAt( str.length-1 );
+            document.getElementById(lett).scrollIntoView();
+            e.preventDefault();
+        });
+      });
+    </script>
   </head>
   <body>
     <!-- Home -->
