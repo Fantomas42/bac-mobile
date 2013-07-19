@@ -4,7 +4,7 @@ NO_COLOR	= \033[0m
 COLOR	 	= \033[32;01m
 SUCCESS_COLOR	= \033[35;01m
 
-all: build
+all: build deploy
 
 build:
 	@echo "$(COLOR)* Build the site$(NO_COLOR)"
